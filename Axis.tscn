@@ -17,7 +17,19 @@ radius = 57.7592
 radius = 61.135
 
 [sub_resource type="Animation" id=5]
-resource_name = "AxisLeftPress"
+resource_name = "FlashError"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Control/Circle:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.356863 ), Color( 1, 0, 0, 0.356863 ), Color( 1, 1, 1, 0.356863 ), Color( 1, 0, 0, 0.356863 ), Color( 1, 1, 1, 0.356863 ), Color( 1, 0, 0, 0.356863 ), Color( 1, 1, 1, 0.356863 ), Color( 1, 0, 0, 0.356863 ), Color( 1, 1, 1, 0.356863 ), Color( 1, 0, 0, 0.356863 ), Color( 1, 1, 1, 0.356863 ) ]
+}
 
 [node name="Axis" type="Node2D"]
 script = ExtResource( 3 )
@@ -57,7 +69,7 @@ __meta__ = {
 }
 
 [node name="SpawnPoint" type="Position2D" parent="CanvasLayer/Control/AxisButtons/Left"]
-position = Vector2( 40, 38 )
+position = Vector2( 39, 41 )
 
 [node name="Area2D" type="Area2D" parent="CanvasLayer/Control/AxisButtons/Left"]
 position = Vector2( 40, 38 )
@@ -66,18 +78,24 @@ position = Vector2( 40, 38 )
 shape = SubResource( 1 )
 
 [node name="Letters" type="Node2D" parent="CanvasLayer/Control/AxisButtons/Left"]
+visible = false
 position = Vector2( 24, -12 )
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/AxisButtons/Left/Letters"]
-margin_right = 40.0
-margin_bottom = 14.0
+margin_left = -5.0
+margin_top = -1.41809
+margin_right = 35.0
+margin_bottom = 94.5819
 custom_fonts/font = ExtResource( 2 )
 text = "A"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Colors" type="Node2D" parent="CanvasLayer/Control/AxisButtons/Left"]
+visible = false
 
 [node name="Right" type="Control" parent="CanvasLayer/Control/AxisButtons"]
 anchor_left = 1.0
@@ -92,7 +110,7 @@ __meta__ = {
 }
 
 [node name="SpawnPoint" type="Position2D" parent="CanvasLayer/Control/AxisButtons/Right"]
-position = Vector2( 39, 39 )
+position = Vector2( 42, 39 )
 
 [node name="Area2D" type="Area2D" parent="CanvasLayer/Control/AxisButtons/Right"]
 position = Vector2( 39, 39 )
@@ -101,18 +119,22 @@ position = Vector2( 39, 39 )
 shape = SubResource( 2 )
 
 [node name="Letters" type="Node2D" parent="CanvasLayer/Control/AxisButtons/Right"]
+visible = false
 position = Vector2( 23, -13 )
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/AxisButtons/Right/Letters"]
 margin_right = 40.0
-margin_bottom = 14.0
+margin_bottom = 96.0
 custom_fonts/font = ExtResource( 2 )
 text = "B"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Colors" type="Node2D" parent="CanvasLayer/Control/AxisButtons/Right"]
+visible = false
 
 [node name="Up" type="Control" parent="CanvasLayer/Control/AxisButtons"]
 anchor_left = 0.5
@@ -125,7 +147,7 @@ __meta__ = {
 }
 
 [node name="SpawnPoint" type="Position2D" parent="CanvasLayer/Control/AxisButtons/Up"]
-position = Vector2( 40, 40 )
+position = Vector2( 41, 40 )
 
 [node name="Area2D" type="Area2D" parent="CanvasLayer/Control/AxisButtons/Up"]
 position = Vector2( 40, 40 )
@@ -134,18 +156,24 @@ position = Vector2( 40, 40 )
 shape = SubResource( 3 )
 
 [node name="Letters" type="Node2D" parent="CanvasLayer/Control/AxisButtons/Up"]
+visible = false
 position = Vector2( 23, -12 )
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/AxisButtons/Up/Letters"]
-margin_right = 40.0
-margin_bottom = 14.0
+margin_left = -3.0
+margin_top = 1.0
+margin_right = 37.0
+margin_bottom = 97.0
 custom_fonts/font = ExtResource( 2 )
 text = "C"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Colors" type="Node2D" parent="CanvasLayer/Control/AxisButtons/Up"]
+visible = false
 position = Vector2( 0, 1 )
 
 [node name="Down" type="Control" parent="CanvasLayer/Control/AxisButtons"]
@@ -161,7 +189,7 @@ __meta__ = {
 }
 
 [node name="SpawnPoint" type="Position2D" parent="CanvasLayer/Control/AxisButtons/Down"]
-position = Vector2( 39, 39 )
+position = Vector2( 40, 42 )
 
 [node name="Area2D" type="Area2D" parent="CanvasLayer/Control/AxisButtons/Down"]
 position = Vector2( 39, 39 )
@@ -170,18 +198,24 @@ position = Vector2( 39, 39 )
 shape = SubResource( 4 )
 
 [node name="Letters" type="Node2D" parent="CanvasLayer/Control/AxisButtons/Down"]
+visible = false
 position = Vector2( 23, -13 )
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/AxisButtons/Down/Letters"]
-margin_right = 40.0
-margin_bottom = 14.0
+margin_left = -2.0
+margin_top = 4.0
+margin_right = 38.0
+margin_bottom = 100.0
 custom_fonts/font = ExtResource( 2 )
 text = "D"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Colors" type="Node2D" parent="CanvasLayer/Control/AxisButtons/Down"]
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/AxisLeftPress = SubResource( 5 )
+anims/FlashError = SubResource( 5 )
