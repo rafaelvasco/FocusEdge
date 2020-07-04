@@ -8,9 +8,26 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Bullet",
+"language": "GDScript",
+"path": "res://Bullet.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://Enemy.gd"
+}, {
+"base": "Line2D",
+"class": "Trail2D",
+"language": "GDScript",
+"path": "res://Framework/Effects/Trail2D/Trail2D.gd"
+} ]
 _global_script_class_icons={
-
+"Bullet": "",
+"Enemy": "",
+"Trail2D": ""
 }
 
 [application]
@@ -67,4 +84,5 @@ AxisRight={
 
 [rendering]
 
+environment/default_clear_color=Color( 0.196078, 0.160784, 0.278431, 1 )
 environment/default_environment="res://default_env.tres"

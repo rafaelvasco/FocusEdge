@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bg_sky.png-fc274ce305da7a43528fc247e582263f.stex"
+path="res://.import/enemy_orb.png-288c89c61444e4281bb2f73af60f222b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/bg_sky.png"
-dest_files=[ "res://.import/bg_sky.png-fc274ce305da7a43528fc247e582263f.stex" ]
+source_file="res://Assets/Images/enemy_orb.png"
+dest_files=[ "res://.import/enemy_orb.png-288c89c61444e4281bb2f73af60f222b.stex" ]
 
 [params]
 

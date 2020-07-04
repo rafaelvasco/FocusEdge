@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/axis_ball.png-66a5c3283d9eb30ba1189fb143d48314.stex"
+path="res://.import/axis_ball.png-90e3b24a23a2488321853a052a58896a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/axis_ball.png"
-dest_files=[ "res://.import/axis_ball.png-66a5c3283d9eb30ba1189fb143d48314.stex" ]
+source_file="res://Assets/Images/axis_ball.png"
+dest_files=[ "res://.import/axis_ball.png-90e3b24a23a2488321853a052a58896a.stex" ]
 
 [params]
 
