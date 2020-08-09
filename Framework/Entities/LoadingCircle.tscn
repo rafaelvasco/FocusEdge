@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Framework/Entities/LoadingCircle.tres" type="Material" id=1]
+
+[node name="LoadingCircle" type="ColorRect"]
+material = ExtResource( 1 )
+margin_right = 250.0
+margin_bottom = 250.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

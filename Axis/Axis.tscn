@@ -1,0 +1,411 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://Resources/TextFontAxis.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/Images/axis_ball.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Audio/explosion.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Images/axis_symbol_bg.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Images/effect_ball.png" type="Texture" id=5]
+[ext_resource path="res://Axis/Axis.gd" type="Script" id=6]
+[ext_resource path="res://Framework/Entities/LoadingCircle.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Axis/AxisEffect.tscn" type="PackedScene" id=8]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 34.2682
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 178.086
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 47.0
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 47.0
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 47.0
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 47.0
+
+[sub_resource type="Animation" id=8]
+length = 0.2
+loop = true
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Circle:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0.282353, 0.392157 ), Color( 1, 0, 0.4, 1 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Score"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("PowerUpAura:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0.823529, 0.0117647, 1 ), Color( 1, 0.243137, 0.0117647, 1 ), Color( 1, 0.823529, 0.0117647, 1 ), Color( 1, 0.243137, 0.0117647, 1 ), Color( 1, 0.823529, 0.0117647, 1 ), Color( 1, 0.243137, 0.0117647, 1 ), Color( 1, 0.823529, 0.0117647, 1 ), Color( 1, 0.243137, 0.0117647, 1 ), Color( 1, 0.823529, 0.0117647, 1 ), Color( 1, 0.243137, 0.0117647, 1 ), Color( 1, 0.823529, 0.0117647, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PowerUpAura:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 4, 4 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Circle:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.356863 ), Color( 0.976471, 0.827451, 0.0352941, 1 ), Color( 1, 1, 1, 0.356863 ), Color( 0.976471, 0.827451, 0.0352941, 1 ), Color( 1, 1, 1, 0.356863 ), Color( 0.976471, 0.827451, 0.0352941, 1 ), Color( 1, 1, 1, 0.356863 ), Color( 0.976471, 0.827451, 0.0352941, 1 ), Color( 1, 1, 1, 0.356863 ), Color( 0.976471, 0.827451, 0.0352941, 1 ), Color( 1, 1, 1, 0.356863 ), Color( 0.976471, 0.827451, 0.0352941, 1 ), Color( 1, 1, 1, 0.356863 ), Color( 0.976471, 0.827451, 0.0352941, 1 ), Color( 1, 1, 1, 0.356863 ), Color( 0.976471, 0.827451, 0.0352941, 1 ), Color( 1, 1, 1, 0.356863 ), Color( 0.976471, 0.827451, 0.0352941, 1 ), Color( 1, 1, 1, 0.356863 ) ]
+}
+
+[sub_resource type="Gradient" id=10]
+colors = PoolColorArray( 1, 1, 1, 0.117647, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=11]
+gradient = SubResource( 10 )
+
+[sub_resource type="ParticlesMaterial" id=12]
+flag_align_y = true
+flag_rotate_y = true
+flag_disable_z = true
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color_ramp = SubResource( 11 )
+
+[sub_resource type="Shader" id=13]
+code = "shader_type canvas_item;
+
+uniform float value: hint_range(0, 100);
+uniform float thickness: hint_range(0, 100) = 30;
+uniform sampler2D fg: hint_albedo;
+uniform sampler2D bg: hint_black_albedo;
+uniform float offset: hint_range(0, 100);
+uniform float smoothing: hint_range(0, 100) = 5;
+
+void fragment() {
+	vec2 point = UV - vec2(0.5);
+	float PI = 3.14159265358979323846;
+	float ang = (1.0 - atan(point.x, point.y) / PI) * 50.0 - offset;	
+	if (ang < 0.0) {
+		ang += 100.0;
+	}	
+	float s = smoothing / 1000.0;
+	float k = PI / 2.0 / s;
+	float r1 = 0.5 - thickness / 200.0;
+	float r2 = 0.5;
+	float r = length(point);
+	float uy = (r2 - r) / (r2 - r1);
+	
+	if (r > r2 || r < r1) {
+		COLOR.a = 0.0;
+	}
+	else {
+		if (ang <= value) {
+			COLOR = texture(fg, vec2(ang / 100.0, uy));
+		}
+		else {
+			COLOR = texture(bg, vec2(ang / 100.0, uy));
+		}
+		
+		if ((r2 - r) < s) {
+			COLOR.a = sin((r2 - r) * k);
+		}
+		if ((r - r1) < s) {
+			COLOR.a = sin((r - r1) * k);
+		}
+	}
+}"
+
+[sub_resource type="Gradient" id=14]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=15]
+gradient = SubResource( 14 )
+
+[sub_resource type="Gradient" id=16]
+colors = PoolColorArray( 0, 0.529412, 1, 1, 1, 0, 0.470588, 1 )
+
+[sub_resource type="GradientTexture" id=17]
+gradient = SubResource( 16 )
+
+[sub_resource type="ShaderMaterial" id=18]
+shader = SubResource( 13 )
+shader_param/value = 0.0
+shader_param/thickness = 30.0
+shader_param/offset = 0.0
+shader_param/smoothing = 20.0
+shader_param/fg = SubResource( 17 )
+shader_param/bg = SubResource( 15 )
+
+[sub_resource type="Animation" id=19]
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("FocusTimerCircle:material:shader_param/bg:gradient:colors")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1 ), PoolColorArray( 1, 0, 0.470588, 1, 1, 0, 0.470588, 1 ) ]
+}
+
+[node name="Axis" type="Node2D" groups=[
+"camera_shakers",
+]]
+pause_mode = 2
+z_index = 10
+script = ExtResource( 6 )
+press_effect = ExtResource( 8 )
+
+[node name="Circle" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0.356863 )
+texture = ExtResource( 2 )
+
+[node name="PowerUpAura" type="Sprite" parent="."]
+visible = false
+self_modulate = Color( 1, 0.823529, 0.0117647, 1 )
+material = SubResource( 1 )
+texture = ExtResource( 5 )
+
+[node name="BulletSpawnOrigin" type="Position2D" parent="."]
+
+[node name="CollisionArea" type="Area2D" parent="."]
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
+shape = SubResource( 2 )
+
+[node name="PickArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickArea"]
+position = Vector2( 0, 0.513336 )
+shape = SubResource( 3 )
+
+[node name="AxisButtons" type="Node2D" parent="."]
+
+[node name="Left" type="Node2D" parent="AxisButtons"]
+position = Vector2( -109, 0 )
+
+[node name="SymbolBg" type="Sprite" parent="AxisButtons/Left"]
+self_modulate = Color( 0, 0, 0, 0.54902 )
+texture = ExtResource( 4 )
+
+[node name="SpawnPoint" type="Position2D" parent="AxisButtons/Left"]
+
+[node name="Area2D" type="Area2D" parent="AxisButtons/Left"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AxisButtons/Left/Area2D"]
+shape = SubResource( 4 )
+
+[node name="Letters" type="Node2D" parent="AxisButtons/Left"]
+
+[node name="Label" type="Label" parent="AxisButtons/Left/Letters"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -17.0
+margin_top = -51.5
+margin_right = 23.0
+margin_bottom = 49.5
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "A"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Right" type="Node2D" parent="AxisButtons"]
+position = Vector2( 108, 0 )
+
+[node name="SymbolBg" type="Sprite" parent="AxisButtons/Right"]
+self_modulate = Color( 0, 0, 0, 0.54902 )
+texture = ExtResource( 4 )
+
+[node name="SpawnPoint" type="Position2D" parent="AxisButtons/Right"]
+
+[node name="Area2D" type="Area2D" parent="AxisButtons/Right"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AxisButtons/Right/Area2D"]
+shape = SubResource( 5 )
+
+[node name="Letters" type="Node2D" parent="AxisButtons/Right"]
+
+[node name="Label" type="Label" parent="AxisButtons/Right/Letters"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -15.0
+margin_top = -51.5
+margin_right = 25.0
+margin_bottom = 49.5
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "B"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Up" type="Node2D" parent="AxisButtons"]
+position = Vector2( 0, -109 )
+
+[node name="SymbolBg" type="Sprite" parent="AxisButtons/Up"]
+self_modulate = Color( 0, 0, 0, 0.54902 )
+texture = ExtResource( 4 )
+
+[node name="SpawnPoint" type="Position2D" parent="AxisButtons/Up"]
+
+[node name="Area2D" type="Area2D" parent="AxisButtons/Up"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AxisButtons/Up/Area2D"]
+shape = SubResource( 6 )
+
+[node name="Letters" type="Node2D" parent="AxisButtons/Up"]
+
+[node name="Label" type="Label" parent="AxisButtons/Up/Letters"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -17.0
+margin_top = -52.5
+margin_right = 23.0
+margin_bottom = 48.5
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "C"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Down" type="Node2D" parent="AxisButtons"]
+position = Vector2( 0, 109 )
+
+[node name="SymbolBg" type="Sprite" parent="AxisButtons/Down"]
+self_modulate = Color( 0, 0, 0, 0.54902 )
+texture = ExtResource( 4 )
+
+[node name="SpawnPoint" type="Position2D" parent="AxisButtons/Down"]
+
+[node name="Area2D" type="Area2D" parent="AxisButtons/Down"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AxisButtons/Down/Area2D"]
+shape = SubResource( 7 )
+
+[node name="Letters" type="Node2D" parent="AxisButtons/Down"]
+
+[node name="Label" type="Label" parent="AxisButtons/Down/Letters"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -14.0
+margin_top = -50.5
+margin_right = 26.0
+margin_bottom = 50.5
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "D"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Damage = SubResource( 8 )
+anims/Score = SubResource( 9 )
+
+[node name="DamageTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="DamageAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -20.0
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Trail" type="Particles2D" parent="."]
+self_modulate = Color( 0.054902, 0.780392, 0.94902, 1 )
+emitting = false
+lifetime = 0.5
+local_coords = false
+draw_order = 1
+process_material = SubResource( 12 )
+texture = ExtResource( 2 )
+
+[node name="FocusTimerCircle" parent="." instance=ExtResource( 7 )]
+material = SubResource( 18 )
+margin_left = -35.0
+margin_top = -35.0
+margin_right = 35.0
+margin_bottom = 35.0
+
+[node name="FocusTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="FocusAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Main = SubResource( 19 )
+
+[node name="BehaviorTimer" type="Timer" parent="."]
+one_shot = true
+[connection signal="body_entered" from="CollisionArea" to="." method="_on_CollisionArea_body_entered"]
+[connection signal="body_entered" from="PickArea" to="." method="_on_PickArea_body_entered"]
+[connection signal="input_event" from="PickArea" to="." method="_on_PickArea_input_event"]
+[connection signal="mouse_entered" from="AxisButtons/Left/Area2D" to="." method="_on_mouse_enter_left_axis"]
+[connection signal="mouse_entered" from="AxisButtons/Right/Area2D" to="." method="_on_mouse_enter_right_axis"]
+[connection signal="mouse_entered" from="AxisButtons/Up/Area2D" to="." method="_on_mouse_enter_up_axis"]
+[connection signal="mouse_entered" from="AxisButtons/Down/Area2D" to="." method="_on_mouse_enter_down_axis"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="DamageTimer" to="." method="_on_DamageTimer_timeout"]
+[connection signal="timeout" from="FocusTimer" to="." method="_on_FocusTimer_timeout"]
+[connection signal="timeout" from="BehaviorTimer" to="." method="_on_BehaviorTimer_timeout"]

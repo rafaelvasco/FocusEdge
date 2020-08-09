@@ -1,0 +1,66 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float value: hint_range(0, 100);
+uniform float thickness: hint_range(0, 100) = 30;
+uniform sampler2D fg: hint_albedo;
+uniform sampler2D bg: hint_black_albedo;
+uniform float offset: hint_range(0, 100);
+uniform float smoothing: hint_range(0, 100) = 5;
+
+void fragment() {
+	vec2 point = UV - vec2(0.5);
+	float PI = 3.14159265358979323846;
+	float ang = (1.0 - atan(point.x, point.y) / PI) * 50.0 - offset;	
+	if (ang < 0.0) {
+		ang += 100.0;
+	}	
+	float s = smoothing / 1000.0;
+	float k = PI / 2.0 / s;
+	float r1 = 0.5 - thickness / 200.0;
+	float r2 = 0.5;
+	float r = length(point);
+	float uy = (r2 - r) / (r2 - r1);
+	
+	if (r > r2 || r < r1) {
+		COLOR.a = 0.0;
+	}
+	else {
+		if (ang <= value) {
+			COLOR = texture(fg, vec2(ang / 100.0, uy));
+		}
+		else {
+			COLOR = texture(bg, vec2(ang / 100.0, uy));
+		}
+		
+		if ((r2 - r) < s) {
+			COLOR.a = sin((r2 - r) * k);
+		}
+		if ((r - r1) < s) {
+			COLOR.a = sin((r - r1) * k);
+		}
+	}
+}"
+
+[sub_resource type="Gradient" id=2]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="Gradient" id=4]
+colors = PoolColorArray( 0.666667, 1, 0, 1, 1, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+
+[resource]
+shader = SubResource( 1 )
+shader_param/value = 0.0
+shader_param/thickness = 15.0
+shader_param/offset = 0.0
+shader_param/smoothing = 10.0
+shader_param/fg = SubResource( 5 )
+shader_param/bg = SubResource( 3 )

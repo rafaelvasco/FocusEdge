@@ -1,0 +1,145 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Fonts/dugout.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Bonus/BonusAnim.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 200
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+length = 0.5
+loop = true
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("BonusLabel:custom_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.945098, 0.976471, 0, 1 ), Color( 1, 0, 0.470588, 1 ), Color( 0.945098, 0.976471, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BonusLabel:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.16, 0.32, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -376.5, -118.5 ), Vector2( -350, -118.5 ), Vector2( -376.5, -118.5 ), Vector2( -350.5, -118.5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.784314 ), Color( 0.67451, 0.027451, 0.466667, 0.784314 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:rect_size")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 238 ), Vector2( 960, 238 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.784314 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BonusLabel:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 480, 540 ), Vector2( 480, 270 ) ]
+}
+
+[node name="BonusAnim" type="Node2D"]
+self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 480, 270 )
+z_index = 20
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -480.0
+margin_top = -127.0
+margin_right = 480.0
+margin_bottom = 111.0
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BonusLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -376.5
+margin_top = -118.5
+margin_right = 376.5
+margin_bottom = 144.5
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.945098, 0.976471, 0, 1 )
+text = "BONUS!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayerLoop" type="AnimationPlayer" parent="."]
+anims/Main = SubResource( 2 )
+
+[node name="AnimationPlayerOneShot" type="AnimationPlayer" parent="."]
+anims/Main = SubResource( 3 )

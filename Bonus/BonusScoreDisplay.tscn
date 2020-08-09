@@ -1,0 +1,242 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/Fonts/dugout.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Bonus/BonusScoreDisplay.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 100
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 70
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Appear"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:rect_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 300 ), Vector2( 960, 300 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.588235 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ColorRect/VBoxContainer/TopLabel:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ColorRect/VBoxContainer/ScoreLabel:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ColorRect2:rect_size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 4 ), Vector2( 960, 4 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("ColorRect3:rect_size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 4 ), Vector2( 960, 4 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("ColorRect/VBoxContainer/TopLabel:rect_position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -200, 36 ), Vector2( 0, 36 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("ColorRect/VBoxContainer/ScoreLabel:rect_position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -200, 172 ), Vector2( 0, 172 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Main"
+length = 0.15
+loop = true
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect/VBoxContainer/TopLabel:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0.560784, 1 ), Color( 1, 0.890196, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect/VBoxContainer/ScoreLabel:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0.929412, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ColorRect3:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0.764706, 1, 1 ), Color( 0.0666667, 0.247059, 0.301961, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ColorRect2:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0.376471, 1 ), Color( 0.423529, 0.0705882, 0.219608, 1 ) ]
+}
+
+[node name="BonusScoreDisplay" type="Node2D"]
+z_index = 20
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0.588235 )
+margin_top = 120.0
+margin_right = 960.0
+margin_bottom = 420.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+anchor_left = 0.000989596
+anchor_right = 0.000989596
+margin_right = 960.0
+margin_bottom = 300.0
+mouse_filter = 2
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TopLabel" type="Label" parent="ColorRect/VBoxContainer"]
+self_modulate = Color( 1, 0, 0.560784, 1 )
+margin_top = 36.0
+margin_right = 960.0
+margin_bottom = 168.0
+custom_fonts/font = SubResource( 1 )
+text = "SCORED!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreLabel" type="Label" parent="ColorRect/VBoxContainer"]
+self_modulate = Color( 0, 0.929412, 1, 1 )
+margin_top = 172.0
+margin_right = 960.0
+margin_bottom = 264.0
+custom_fonts/font = SubResource( 2 )
+text = "999"
+align = 1
+
+[node name="AppearAnimation" type="AnimationPlayer" parent="."]
+anims/Appear = SubResource( 3 )
+
+[node name="MainAnimation" type="AnimationPlayer" parent="."]
+anims/Main = SubResource( 4 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_top = 416.0
+margin_right = 960.0
+margin_bottom = 420.0
+color = Color( 1, 0, 0.376471, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+margin_top = 121.0
+margin_right = 960.0
+margin_bottom = 125.0
+color = Color( 0, 0.764706, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

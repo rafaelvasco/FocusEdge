@@ -6,7 +6,7 @@ onready var timer : Timer  = $ShakeTimer
 export var amplitude := 6.0
 export var duration := 0.8 setget set_duration
 export(float, EASE) var DAMP_EASING := 1.0
-export var shake_enabled := false
+export var shake_enabled := true
 
 var shake := false setget set_shake
 
@@ -18,7 +18,7 @@ func _ready():
 	connect_to_shakers()
 
 
-func _process(delta: float):
+func _process(_delta: float):
 	var damping := ease(timer.time_left / timer.wait_time, DAMP_EASING)
 	self.offset = Vector2(
 		rand_range(amplitude, -amplitude) * damping,

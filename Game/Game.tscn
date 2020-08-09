@@ -1,0 +1,112 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Game/Game.gd" type="Script" id=1]
+[ext_resource path="res://Framework/Effects/TiledBackground/TiledBackground.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Framework/Cameras/ShakeCamera.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Bonus/BonusAnim.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Axis/Axis.tscn" type="PackedScene" id=5]
+[ext_resource path="res://FocusedPhraseDisplay/FocusedPhraseBigDisplay.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Enemy/Enemy.tscn" type="PackedScene" id=7]
+[ext_resource path="res://BgEffect/BgEffect.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Game/ScoreLabel.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/Images/bg_focus_edge.png" type="Texture" id=10]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 433.765, 231.445 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 465.898, 259.146 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Main"
+length = 20.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TiledBackground:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 4, 6, 8, 10, 12, 14, 17, 20 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.0745098, 0.670588, 0.643137, 0.588235 ), Color( 0.0627451, 0.560784, 1, 0.588235 ), Color( 0.368627, 0.415686, 0.894118, 0.588235 ), Color( 0, 0.976471, 1, 0.588235 ), Color( 0.188235, 0.482353, 0.792157, 0.588235 ), Color( 0.0666667, 0.333333, 0, 0.588235 ), Color( 0.0666667, 0.333333, 0, 0.588235 ), Color( 0.0666667, 0.882353, 0.862745, 0.588235 ), Color( 0, 0.12549, 0.619608, 0.588235 ), Color( 0.054902, 0.721569, 0.658824, 0.588235 ) ]
+}
+
+[node name="Game" type="Node2D"]
+pause_mode = 1
+script = ExtResource( 1 )
+bg_effect_scene = ExtResource( 8 )
+enemy_scene = ExtResource( 7 )
+
+[node name="TiledBackground" parent="." instance=ExtResource( 2 )]
+self_modulate = Color( 0, 0.0392157, 0.0980392, 1 )
+texture = ExtResource( 10 )
+
+[node name="EnemySpawnPoint1" type="Position2D" parent="."]
+position = Vector2( 132, -60 )
+
+[node name="EnemySpawnPoint2" type="Position2D" parent="."]
+position = Vector2( 245, -60 )
+
+[node name="EnemySpawnPoint3" type="Position2D" parent="."]
+position = Vector2( 464, -60 )
+
+[node name="EnemySpawnPoint4" type="Position2D" parent="."]
+position = Vector2( 670, -60 )
+
+[node name="EnemySpawnPoint5" type="Position2D" parent="."]
+position = Vector2( 789, -60 )
+
+[node name="EnemyTargetPoint1" type="Position2D" parent="."]
+position = Vector2( 132, 604 )
+
+[node name="EnemyTargetPoint2" type="Position2D" parent="."]
+position = Vector2( 245, 604 )
+
+[node name="EnemyTargetPoint3" type="Position2D" parent="."]
+position = Vector2( 464, 604 )
+
+[node name="EnemyTargetPoint4" type="Position2D" parent="."]
+position = Vector2( 670, 604 )
+
+[node name="EnemyTargetPoint5" type="Position2D" parent="."]
+position = Vector2( 789, 604 )
+
+[node name="BgEffectSpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]
+
+[node name="FocusedPhraseBigDisplay" parent="." instance=ExtResource( 6 )]
+
+[node name="Axis" parent="." instance=ExtResource( 5 )]
+position = Vector2( 480, 460 )
+
+[node name="BonusAnim" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[node name="ScoreLabel" parent="." instance=ExtResource( 9 )]
+margin_top = 11.0
+margin_bottom = 59.0
+
+[node name="Camera2D" parent="." instance=ExtResource( 3 )]
+
+[node name="EnemyActiveArea" type="Area2D" parent="Camera2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/EnemyActiveArea"]
+shape = SubResource( 1 )
+
+[node name="EnemyDestroyArea" type="Area2D" parent="Camera2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/EnemyDestroyArea"]
+shape = SubResource( 2 )
+
+[node name="BgAnimator" type="AnimationPlayer" parent="."]
+anims/Main = SubResource( 3 )
+[connection signal="timeout" from="BgEffectSpawnTimer" to="." method="_on_bg_effect_spawn_timeout"]
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timeout"]
+[connection signal="body_entered" from="Camera2D/EnemyActiveArea" to="." method="_on_EnemyActiveArea_body_entered"]
+[connection signal="body_exited" from="Camera2D/EnemyDestroyArea" to="." method="_on_EnemyDestroyArea_body_exited"]

@@ -9,15 +9,20 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "Behavior",
+"language": "GDScript",
+"path": "res://Axis/SpecialBehaviors/Behavior.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Bullet",
 "language": "GDScript",
-"path": "res://Bullet.gd"
+"path": "res://Bullet/Bullet.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Enemy",
 "language": "GDScript",
-"path": "res://Enemy.gd"
+"path": "res://Enemy/Enemy.gd"
 }, {
 "base": "Line2D",
 "class": "Trail2D",
@@ -25,6 +30,7 @@ _global_script_classes=[ {
 "path": "res://Framework/Effects/Trail2D/Trail2D.gd"
 } ]
 _global_script_class_icons={
+"Behavior": "",
 "Bullet": "",
 "Enemy": "",
 "Trail2D": ""
@@ -34,12 +40,18 @@ _global_script_class_icons={
 
 config/name="FocusEdge"
 config/description="Focus Edge Mobile Game"
-run/main_scene="res://Game.tscn"
+run/main_scene="res://Intro/Intro.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-Common="*res://Common.gd"
+Common="*res://Singletons/Common.gd"
+WordGenerator="*res://Singletons/WordGenerator.gd"
+PlayerData="*res://Singletons/PlayerData.gd"
+
+[debug]
+
+gdscript/warnings/return_value_discarded=false
 
 [display]
 

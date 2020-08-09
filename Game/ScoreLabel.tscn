@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Fonts/text_font.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Game/ScoreLabel.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 46
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Main"
+length = 0.5
+loop = true
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.24, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.0235294, 1, 0.952941, 1 ), Color( 0, 0.227451, 1, 1 ) ]
+}
+
+[node name="ScoreLabel" type="Label"]
+margin_right = 961.0
+margin_bottom = 43.0
+custom_fonts/font = SubResource( 1 )
+text = "SCORE:"
+align = 1
+valign = 1
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Main = SubResource( 2 )
